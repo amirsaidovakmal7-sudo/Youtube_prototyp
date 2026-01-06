@@ -26,3 +26,16 @@ class Video(models.Model):
 
     def __str__(self):
         return self.news_video_name
+
+
+class AddVideo(models.Model):
+    user_id = models.IntegerField()
+    user_product = models.ForeignKey(Video, on_delete=models.CASCADE)
+    add_time = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Загрузка'
+        verbose_name_plural = 'Загрузки'
+
+    def __str__(self):
+        return f'Форма добавления пользователя с ID {self.user_id}'
